@@ -53,3 +53,12 @@ jobs:
 
       - name: Test code with pytest
         run: pytest
+  
+    deploy:
+    runs_on: ubuntu-latest
+    uses: appleboy/ssh-action@main
+    with:
+      host: ${{ secrets.SSH_HOST }}
+      username: ${{ secrets.SSH_USER }}
+      password: ${{ secrets.SSH_PASSWORD }}
+      script: expect /etc/proejct/startup.sh
