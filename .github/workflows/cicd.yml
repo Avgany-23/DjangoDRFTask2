@@ -54,7 +54,7 @@ jobs:
       - name: Test code with pytest
         run: pytest
     
-    deploy:
+  deploy:
     runs_on: ubuntu-latest
     
     steps:
