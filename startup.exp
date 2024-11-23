@@ -1,4 +1,4 @@
-#!/bin/bash/expect
+#!/usr/bin/expect
 
 spawn /root/project/startup.sh
 expect "password"
