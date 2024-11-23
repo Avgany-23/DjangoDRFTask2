@@ -1,0 +1,6 @@
+#!/bin/bash/expect
+
+spawn /root/project/startup.sh
+expect "password"
+send -- "YFeBcag6ISOMCvSv"
+expect eof 
