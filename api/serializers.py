@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Product, Stock, StockProduct
 
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
@@ -36,6 +37,9 @@ class StockSerializer(serializers.ModelSerializer):
         stock = super().update(instance, validated_data)
         for pos in position:
             product = pos.pop('product')
-            StockProduct.objects.update_or_create(stock=stock, product=product, defaults=pos)
-            # Либо через get_or_create + StockProduct.objects.bulk_update(), но будет больше запросов
+            StockProduct.objects.update_or_create(
+                stock=stock,
+                product=product,
+                defaults=pos
+            )
         return stock

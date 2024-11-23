@@ -1,0 +1,43 @@
+name: CI/CD Pipeline
+
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      branches: [ main ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.12
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Lint check code with flake8
+      run: flake8
+
+    - name: Test code with pytest
+      run: |
+        cd tg_bots/tests
+        pytest

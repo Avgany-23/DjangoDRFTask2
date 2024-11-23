@@ -26,4 +26,6 @@ class StockViewSet(ModelViewSet):
     serializer_class = StockSerializer
     lookup_field = 'id'
     pagination_class = CustomPaginators
-    search_fields = ['products__id', 'products__title', 'products__description']
+    search_fields = [
+        'products__id', 'products__title', 'products__description'
+    ]
