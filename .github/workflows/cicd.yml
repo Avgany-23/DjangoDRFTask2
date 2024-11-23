@@ -52,6 +52,4 @@ jobs:
         run: flake8
 
       - name: Test code with pytest
-        run: |
-          cd tg_bots/tests
-          pytest
+        run: pytest
