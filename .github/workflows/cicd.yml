@@ -54,15 +54,11 @@ jobs:
       - name: Test code with pytest
         run: pytest
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: expect /root/project/startup.sh
+          script: expect /root/project/startup.exp
+
