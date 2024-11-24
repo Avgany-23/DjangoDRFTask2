@@ -69,7 +69,7 @@ jobs:
           script: pwd ; ls
 
       - name: PWD
-        run: pwd
+        run: pwd ; ls
 #      - name: Docker run
 #        run: |
 #          docker compose down
