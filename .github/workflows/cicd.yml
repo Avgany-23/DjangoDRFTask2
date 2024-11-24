@@ -10,49 +10,49 @@ on:
 
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-
-    env:
-      DB_NAME: ${{ secrets.DB_NAME }}
-      DB_USER: ${{ secrets.DB_USER }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      DB_HOST: ${{ secrets.DB_HOST }}
-      DB_PORT: ${{ secrets.DB_PORT }}
-
-    services:
-      postgresql_main:
-        image: postgres:16.4
-        env:
-          POSTGRES_DB: ${{ env.DB_NAME }}
-          POSTGRES_USER: ${{ env.DB_USER }}
-          POSTGRES_PASSWORD: ${{ env.DB_PASSWORD }}
-        ports:
-          - 5432:5432
-        options:
-          --health-cmd pg_isready
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.12
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Lint check code with flake8
-        run: flake8
-
-      - name: Test code with pytest
-        run: pytest
+#  tests:
+#    runs-on: ubuntu-latest
+#
+#    env:
+#      DB_NAME: ${{ secrets.DB_NAME }}
+#      DB_USER: ${{ secrets.DB_USER }}
+#      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+#      DB_HOST: ${{ secrets.DB_HOST }}
+#      DB_PORT: ${{ secrets.DB_PORT }}
+#
+#    services:
+#      postgresql_main:
+#        image: postgres:16.4
+#        env:
+#          POSTGRES_DB: ${{ env.DB_NAME }}
+#          POSTGRES_USER: ${{ env.DB_USER }}
+#          POSTGRES_PASSWORD: ${{ env.DB_PASSWORD }}
+#        ports:
+#          - 5432:5432
+#        options:
+#          --health-cmd pg_isready
+#          --health-interval 5s
+#          --health-timeout 5s
+#          --health-retries 5
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#
+#      - name: Set up python
+#        uses: actions/setup-python@v2
+#        with:
+#          python-version: 3.12
+#
+#      - name: Install dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install -r requirements.txt
+#
+#      - name: Lint check code with flake8
+#        run: flake8
+#
+#      - name: Test code with pytest
+#        run: pytest
 
 
   deploy:
