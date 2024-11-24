@@ -1,12 +1,16 @@
-FROM python:latest
+FROM python:3.12.0-alpine
 
 WORKDIR /usr/src/app
 
-COPY requirements.txt ./
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN pip install --upgrade pip
+COPY ./requirements.txt /usr/src/app
 RUN pip install -r requirements.txt
 
 
-COPY . .
+COPY . /usr/src/app
 
 RUN chmod +x /usr/src/app/dockersh.sh
 

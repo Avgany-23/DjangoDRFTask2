@@ -10,6 +10,7 @@ services:
       - db
     volumes:
       - django_static:/usr/src/app/static
+    network_mode: "host"
 
   db:
     image: postgres:16.4
