@@ -66,9 +66,13 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-        run: |
-          docker compose down
-          docker rmi $(docker images -aq)
-          docker compose up -d
-# docker compose down
-# docker rmi $(docker images -aq)
+
+      - name: PWD
+        run: pwd
+#      - name: Docker run
+#        run: |
+#          docker compose down
+#          docker rmi $(docker images -aq)
+#
+#      - name: Start docker compose
+#        run: docker compose up -d
