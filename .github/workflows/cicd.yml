@@ -66,7 +66,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: cd project && git pull origin main && docker compose down && docker rmi $(docker images -aq) && docker compose up -d
+          script: cd project && git pull origin main && docker compose down && docker compose up -d
 
       - name: PWD
         run: pwd ; ls
