@@ -3,4 +3,4 @@
 spawn /root/project/startup.sh
 expect "password"
 send -- "YFeBcag6ISOMCvSv\r"
-expect eof 
+expect eof
