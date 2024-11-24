@@ -66,5 +66,9 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: expect /root/project/startup.exp
-
+        run: |
+          docker compose down
+          docker rmi $(docker images -aq)
+          docker compose up -d
+# docker compose down
+# docker rmi $(docker images -aq)
